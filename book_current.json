@@ -1,0 +1,19 @@
+{
+  "title": "可执行文件格式：Mach-O",
+  "description": "介绍Mac和iOS等Apple苹果系统的常见可执行文件格式：Mach-O；",
+  "pluginsConfig": {
+    "github-buttons": {
+      "buttons": [
+        {
+          "repo": "exec_file_format_macho"
+        }
+      ]
+    },
+    "sitemap-general": {
+      "prefix": "https://book.crifan.org/books/exec_file_format_macho/website/"
+    },
+    "toolbar-button": {
+      "url": "https://book.crifan.org/books/exec_file_format_macho/pdf/exec_file_format_macho.pdf"
+    }
+  }
+}
