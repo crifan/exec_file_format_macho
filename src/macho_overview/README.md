@@ -3,6 +3,7 @@
 * `Mach-O`
   * `Mach-O`=`Mach Object`=`Mach Object file format`
   * 是什么：`Mac`和`iOS`等`Apple`平台中的[可执行文件格式](https://book.crifan.org/books/executable_file_format/website/)
+    * ![macho_apple_everywhere](../assets/img/macho_apple_everywhere.png)
   * 名词解释
     * `Mach-O` = `Mach` + `O`
       * `Mach`

@@ -1,6 +1,5 @@
 # Mach-O格式
 
-
 ## Mach-O格式的常见文件类型
 
 * Mach-O格式的常见文件类型
@@ -22,14 +21,6 @@
       * 文件：`.dSYM/Contents/Resources/DWARF/xxx`
         * 常用于分析APP的崩溃信息
 
-## Mach-O的结构详情
+## Mach-O vs ELF
 
-* Mach-O基本结构
-  * `Header`：文件类型、目标架构类型等
-  * `Load commands`：描述文件在虚拟内存中的逻辑结构、布局
-  * `Raw segment data`：在Load commands中定义的Segment的原始数据
-* Mach-O详细定义
-  * 详见：xnu源码
-    * https://opensource.apple.com/tarballs/xnu/
-      * `EXTERNAL_HEADERS/mach-o/fat.h`
-      * `EXTERNAL_HEADERS/mach-o/loader.h`
+![macho_vs_elf](../assets/img/macho_vs_elf.png)
