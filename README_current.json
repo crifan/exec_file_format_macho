@@ -1,6 +1,6 @@
 {
-  "latestVersion": "v0.1",
-  "lastUpdate": "20231004",
+  "latestVersion": "v0.9.0",
+  "lastUpdate": "20231005",
   "gitRepoName": "exec_file_format_macho",
   "bookName": "可执行文件格式：Mach-O",
   "bookDescription": "介绍Mac和iOS等Apple苹果系统的常见可执行文件格式：Mach-O；"
