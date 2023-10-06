@@ -1,25 +1,5 @@
-# segment和section
 
-![macho_segments_sections](../../../assets/img/macho_segments_sections.png)
-
-## 主要的segment段和section节
-
-* segment段
-  * `__TEXT`段
-    * Section节
-      * `__text`: The compiled machine code for the executable
-      * `__const`: The general constant data for the executable
-      * `__cstring`: Literal string constants (quoted strings in source code)
-      * `__picsymbol_stub`: Position-independent code stub routines used by the dynamic linker (dyld)
-  * `__DATA`段
-    * Section节
-      * `__data`: Initialized global variables (for example `int a = 1;` or `static int a = 1;`)
-      * `__const`: Constant data needing relocation (for example, `char * const p = "foo";`)
-      * `__bss`: Uninitialized static variables (for example, `static int a;`)
-      * `__common`: Uninitialized external globals (for example, `int a;` outside function blocks)
-      * `__dyld`: A placeholder section, used by the dynamic linker
-      * `__la_symbol_ptr`: **Lazy** symbol pointers. Symbol pointers for each undefined function called by the executable
-      * `__nl_symbol_ptr`: **Non lazy** symbol pointers. Symbol pointers for each undefined data symbol referenced by the executable
+# section节
 
 ## section定义
 

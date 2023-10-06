@@ -1,51 +1,39 @@
-# Mach-O的Header的filetype和flags
+# Mach-O的Header的flags
+
+## flags含义解释
+
+* `MH_NOUNDEFS`
+  * The object file contained no undefined references when it was built.
+* `MH_INCRLINK`
+  * The object file is the output of an incremental link against a base file and cannot be linked again.
+* `MH_DYLDLINK`
+  * The file is input for the dynamic linker and cannot be statically linked again.
+* `MH_TWOLEVEL`
+  * The image is using two-level namespace bindings.
+* `MH_BINDATLOAD`
+  * The dynamic linker should bind the undefined references when the file is loaded.
+* `MH_PREBOUND`
+  * The file’s undefined references are prebound.
+* `MH_PREBINDABLE`
+  * This file is not prebound but can have its prebinding redone. Used only when MH_PREBEOUND is not set.
+* `MH_NOFIXPREBINDING`
+  * The dynamic linker doesn’t notify the prebinding agent about this executable.
+* `MH_ALLMODSBOUND`
+  * Indicates that this binary binds to all two-level namespace modules of its dependent libraries. Used only when MH_PREBINDABLE and MH_TWOLEVEL are set.
+* `MH_CANONICAL`
+  * This file has been canonicalized by unprebinding—clearing prebinding information from the file. See the redo_prebinding man page for details.
+* `MH_SPLIT_SEGS`
+  * The file has its read-only and read-write segments split.
+* `MH_FORCE_FLAT`
+  * The executable is forcing all images to use flat namespace bindings.
+* `MH_SUBSECTIONS_VIA_SYMBOLS`
+  * The sections of the object file can be divided into individual blocks. These blocks are dead-stripped if they are not used by other code. See Linking for details.
+* `MH_NOMULTIDEFS`
+  * This umbrella guarantees there are no multiple definitions of symbols in its subimages. As a result, the two-level namespace hints can always be used.
+
+## flags定义
 
 * ![macho_headers_filetype_flags](../../../assets/img/macho_headers_filetype_flags.png)
-
-## filetype
-
-[源码定义](https://opensource.apple.com/source/xnu/xnu-2050.18.24/EXTERNAL_HEADERS/mach-o/loader.h)：
-
-```c
-/*
- * The layout of the file depends on the filetype.  For all but the MH_OBJECT
- * file type the segments are padded out and aligned on a segment alignment
- * boundary for efficient demand pageing.  The MH_EXECUTE, MH_FVMLIB, MH_DYLIB,
- * MH_DYLINKER and MH_BUNDLE file types also have the headers included as part
- * of their first segment.
- * 
- * The file type MH_OBJECT is a compact format intended as output of the
- * assembler and input (and possibly output) of the link editor (the .o
- * format).  All sections are in one unnamed segment with no segment padding. 
- * This format is used as an executable format when the file is so small the
- * segment padding greatly increases its size.
- *
- * The file type MH_PRELOAD is an executable format intended for things that
- * are not executed under the kernel (proms, stand alones, kernels, etc).  The
- * format can be executed under the kernel but may demand paged it and not
- * preload it before execution.
- *
- * A core file is in MH_CORE format and can be any in an arbritray legal
- * Mach-O file.
- *
- * Constants for the filetype field of the mach_header
- */
-#define	MH_OBJECT	0x1		/* relocatable object file */
-#define	MH_EXECUTE	0x2		/* demand paged executable file */
-#define	MH_FVMLIB	0x3		/* fixed VM shared library file */
-#define	MH_CORE		0x4		/* core file */
-#define	MH_PRELOAD	0x5		/* preloaded executable file */
-#define	MH_DYLIB	0x6		/* dynamically bound shared library */
-#define	MH_DYLINKER	0x7		/* dynamic link editor */
-#define	MH_BUNDLE	0x8		/* dynamically bound bundle file */
-#define	MH_DYLIB_STUB	0x9		/* shared library stub for static */
-					/*  linking only, no section contents */
-#define	MH_DSYM		0xa		/* companion file with only debug */
-					/*  sections */
-#define	MH_KEXT_BUNDLE	0xb		/* x86_64 kexts */
-```
-
-## flags
 
 [源码定义](https://opensource.apple.com/source/xnu/xnu-2050.18.24/EXTERNAL_HEADERS/mach-o/loader.h)：
 

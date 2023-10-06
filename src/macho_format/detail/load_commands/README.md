@@ -1,6 +1,80 @@
 # Load Commands
 
-* ![macho_detail_load_commands](../../assets/img/macho_detail_load_commands.png)
+* 概述
+  * 位置：Load commands紧跟在Mach-O的Header之后
+  * 作用：Load commands指定了文件的布局结构和链接特征
+    * 有很多很多种Load commands
+    * 这些加载指令清晰地告诉加载器如何处理二进制数据，有些命令是由内核处理的，有些是由动态链接器处理的
+
+## Load Commands类型介绍
+
+* 概述
+  * `LC_SEGMENT`：被映射到内存的段
+  * `LC_SYMTAB`：符号表
+  * `LC_DYSYMTAB`：动态符号表
+  * `LC_LOAD_DYLIB`：动态链接库
+* 详解
+  * `LC_UUID`
+    * 数据结构定义：`uuid_command`
+    * 含义：Specifies the 128-bit UUID for an image or its corresponding dSYM file
+  * `LC_SEGMENT`
+    * 数据结构定义：`segment_command`
+    * 含义：Defines a segment of this file to be mapped into the address space of the process that loads this file. It also includes all the sections contained by the segment.
+  * `LC_SEGMENT_64`
+    * 数据结构定义：`segment_command_64`
+    * 含义：Defines a 64-bit segment of this file to be mapped into the address space of the process that loads this file. It also includes all the sections contained by the segment.
+  * `LC_SYMTAB`
+    * 数据结构定义：`symtab_command`
+    * 含义：Specifies the symbol table for this file. This information is used by both static and dynamic linkers when linking the file, and also by debuggers to map symbols to the original source code files from which the symbols were generated.
+  * `LC_DYSYMTAB`
+    * 数据结构定义：`dysymtab_command`
+    * 含义：Specifies additional symbol table information used by the dynamic linker.
+  * `LC_THREAD`/`LC_UNIXTHREAD`
+    * 数据结构定义：`thread_command`
+    * 含义：For an executable file, the LC_UNIXTHREAD command defines the initial thread state of the main thread of the process. LC_THREAD is similar to LC_UNIXTHREAD but does not cause the kernel to allocate a stack.
+  * `LC_UUID`
+    * 数据结构定义：`uuid_command`
+    * 含义：Specifies the 128-bit UUID for an image or its corresponding dSYM file
+  * `LC_LOAD_DYLIB`
+    * 数据结构定义：`dylib_command`
+    * 含义：Defines the name of a dynamic shared library that this file links against.
+  * `LC_ID_DYLIB`
+    * 数据结构定义：`dylib_command`
+    * 含义：Specifies the install name of a dynamic shared library.
+  * `LC_PREBOUND_DYLIB`
+    * 数据结构定义：`prebound_dylib_command`
+    * 含义：For a shared library that this executable is linked prebound against, specifies the modules in the shared library that are used.
+  * `LC_LOAD_DYLINKER`
+    * 数据结构定义：`dylinker_command`
+    * 含义：Specifies the dynamic linker that the kernel executes to load this file.
+  * `LC_ID_DYLINKER`
+    * 数据结构定义：`dylinker_command`
+    * 含义：Identifies this file as a dynamic linker.
+  * `LC_ROUTINES`
+    * 数据结构定义：`routines_command`
+    * 含义：Contains the address of the shared library initialization routine (specified by the linker’s `-init` option).
+  * `LC_ROUTINES_64`
+    * 数据结构定义：`routines_command_64`
+    * 含义：Contains the address of the shared library 64-bit initialization routine (specified by the linker’s `-init` option).
+  * `LC_TWOLEVEL_HINTS`
+    * 数据结构定义：`twolevel_hints_command`
+    * 含义：Contains the two-level namespace lookup hint table.
+  * `LC_SUB_FRAMEWORK`
+    * 数据结构定义：`sub_framework_command`
+    * 含义：Identifies this file as the implementation of a subframework of an umbrella framework. The name of the umbrella framework is stored in the string parameter.
+  * `LC_SUB_UMBRELLA`
+    * 数据结构定义：`sub_umbrella_command`
+    * 含义：Specifies a file that is a subumbrella of this umbrella framework.
+  * `LC_SUB_LIBRARY`
+    * 数据结构定义：`sub_library_command`
+    * 含义：Defines the attributes of the `LC_SUB_LIBRARY` load command. Identifies a sublibrary of this framework and marks this framework as an umbrella framework.
+  * `LC_SUB_CLIENT`
+    * 数据结构定义：`sub_client_command`
+    * 含义：A subframework can explicitly allow another framework or bundle to link against it by including an `LC_SUB_CLIENT` load command containing the name of the framework or a client name for a bundle.
+
+## Load Commands定义
+
+* ![macho_detail_load_commands](../../../assets/img/macho_detail_load_commands.png)
 
 [源码定义](https://opensource.apple.com/source/xnu/xnu-2050.18.24/EXTERNAL_HEADERS/mach-o/loader.h)：
 
@@ -97,92 +171,3 @@ struct load_command {
 * 注：iOS 15.0后新增的Load Command：
   * LC_DYLD_CHAINED_FIXUPS
   * LC_DYLD_EXPORTS_TRIE
-
-### segment_command
-
-* 精简定义
-
-```c
-struct segment_command {
-  uint32_t  cmd;
-  uint32_t  cmdsize;
-  char      segname[16];
-  uint32_t  vmaddr;
-  uint32_t  vmsize;
-  uint32_t  fileoff;
-  uint32_t  filesize;
-  vm_prot_t maxprot;
-  vm_prot_t initprot;
-  uint32_t  nsects;
-  uint32_t  flags;
-};
-```
-
-
-* 完整定义
-
-
-```c
-/*
- * The segment load command indicates that a part of this file is to be
- * mapped into the task's address space.  The size of this segment in memory,
- * vmsize, maybe equal to or larger than the amount to map from this file,
- * filesize.  The file is mapped starting at fileoff to the beginning of
- * the segment in memory, vmaddr.  The rest of the memory of the segment,
- * if any, is allocated zero fill on demand.  The segment's maximum virtual
- * memory protection and initial virtual memory protection are specified
- * by the maxprot and initprot fields.  If the segment has sections then the
- * section structures directly follow the segment command and their size is
- * reflected in cmdsize.
- */
-struct segment_command { /* for 32-bit architectures */
-	uint32_t	cmd;		/* LC_SEGMENT */
-	uint32_t	cmdsize;	/* includes sizeof section structs */
-	char		segname[16];	/* segment name */
-	uint32_t	vmaddr;		/* memory address of this segment */
-	uint32_t	vmsize;		/* memory size of this segment */
-	uint32_t	fileoff;	/* file offset of this segment */
-	uint32_t	filesize;	/* amount to map from the file */
-	vm_prot_t	maxprot;	/* maximum VM protection */
-	vm_prot_t	initprot;	/* initial VM protection */
-	uint32_t	nsects;		/* number of sections in segment */
-	uint32_t	flags;		/* flags */
-};
-
-/*
- * The 64-bit segment load command indicates that a part of this file is to be
- * mapped into a 64-bit task's address space.  If the 64-bit segment has
- * sections then section_64 structures directly follow the 64-bit segment
- * command and their size is reflected in cmdsize.
- */
-struct segment_command_64 { /* for 64-bit architectures */
-	uint32_t	cmd;		/* LC_SEGMENT_64 */
-	uint32_t	cmdsize;	/* includes sizeof section_64 structs */
-	char		segname[16];	/* segment name */
-	uint64_t	vmaddr;		/* memory address of this segment */
-	uint64_t	vmsize;		/* memory size of this segment */
-	uint64_t	fileoff;	/* file offset of this segment */
-	uint64_t	filesize;	/* amount to map from the file */
-	vm_prot_t	maxprot;	/* maximum VM protection */
-	vm_prot_t	initprot;	/* initial VM protection */
-	uint32_t	nsects;		/* number of sections in segment */
-	uint32_t	flags;		/* flags */
-};
-
-/* Constants for the flags field of the segment_command */
-#define	SG_HIGHVM	0x1	/* the file contents for this segment is for
-				   the high part of the VM space, the low part
-				   is zero filled (for stacks in core files) */
-#define	SG_FVMLIB	0x2	/* this segment is the VM that is allocated by
-				   a fixed VM library, for overlap checking in
-				   the link editor */
-#define	SG_NORELOC	0x4	/* this segment has nothing that was relocated
-				   in it and nothing relocated to it, that is
-				   it maybe safely replaced without relocation*/
-#define SG_PROTECTED_VERSION_1	0x8 /* This segment is protected.  If the
-				       segment starts at file offset 0, the
-				       first page of the segment is not
-				       protected.  All other pages of the
-				       segment are protected. */
-```
-

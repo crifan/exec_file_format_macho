@@ -1,4 +1,4 @@
-# magic
+# Mach-O的Header的magic
 
 [源码定义](https://opensource.apple.com/source/xnu/xnu-2050.18.24/EXTERNAL_HEADERS/mach-o/loader.h)：
 

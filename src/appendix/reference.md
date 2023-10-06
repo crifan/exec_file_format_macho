@@ -4,8 +4,11 @@
 * 【记录】静态分析Mask的动态库：MaskPro.dylib
 * 【整理】去研究Mach-O格式
 * 【记录】Mach-O格式相关资料
+* 【整理】苹果的二进制格式Mach-O的详细定义
+* 【整理】Mach-O格式和启动相关
 * 
 * [可执行文件格式](https://book.crifan.org/books/executable_file_format/website/)
+* [可执行文件格式：ELF](https://book.crifan.org/books/exec_file_format_elf/website/)
 * 
 * [XLsn0w/Cydia](https://github.com/XLsn0w/Cydia)
 * [XNU - 维基百科，自由的百科全书 (wikipedia.org)](https://zh.wikipedia.org/zh-hans/XNU)
@@ -28,4 +31,14 @@
 * [A Deep Dive into Core Dumps on iOS · iOS Snapshot Fuzzing (tkopf.de)](https://tkopf.de/posts/deep-dive-core-dump/)
 * [iOS/Bypassing-AMFI.md at master · writeups/iOS · GitHub](https://github.com/writeups/iOS/blob/master/About%20iOS/Bypassing-AMFI.md)
 * [iOS/Mach-O.md at master · writeups/iOS · GitHub](https://github.com/writeups/iOS/blob/master/About%20iOS/Mach-O.md)
+* [iOS dyld - 简书 (jianshu.com)](https://www.jianshu.com/p/6894d0f08a44)
+* [Package ld - The Go Programming Language (google.cn)](https://golang.google.cn/pkg/cmd/link/internal/ld/)
+* [osx-abi-macho-file-format-reference/Mach-O_File_Format.pdf at master · aidansteele/osx-abi-macho-file-format-reference (github.com)](https://github.com/aidansteele/osx-abi-macho-file-format-reference/blob/master/Mach-O_File_Format.pdf)
+* [Mac Dev Center: Mac OS X ABI Mach-O File Format Reference](https://web.archive.org/web/20090901205800/http://developer.apple.com/mac/library/documentation/DeveloperTools/Conceptual/MachORuntime/Reference/reference.html)
+* [aidansteele/osx-abi-macho-file-format-reference: Mirror of OS X ABI Mach-O File Format Reference (github.com)](https://github.com/aidansteele/osx-abi-macho-file-format-reference)
+* [Overview of the Mach-O Executable Format (apple.com)](https://developer.apple.com/library/archive/documentation/Performance/Conceptual/CodeFootprint/Articles/MachOOverview.html)
+* [Position-Independent Code](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/MachOTopics/1-Articles/dynamic_code.html#//apple_ref/doc/uid/TP40002528)
+* [Mach-O文件结构理解 | LJ小窝 (jianli2017.top)](https://jianli2017.top/wiki/IOS/MachO/MachO_FileStructure/)
+* [Edgar's Blog (tbfungeek.github.io)](https://tbfungeek.github.io/page/7/)
+* [Building Mach-O Files (apple.com)](https://developer.apple.com/library/archive/documentation/DeveloperTools/Conceptual/MachOTopics/1-Articles/building_files.html#//apple_ref/doc/uid/TP40001828-SW1)
 * 
