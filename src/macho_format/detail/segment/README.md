@@ -47,47 +47,50 @@
 
 ### 举例
 
-某个段表的详情：
-
-```bash
-# Sections:
-# Address    Size        Segment    Section
-0x100001DC0    0x00A38B42    __TEXT    __text
-0x100A3A902    0x00001C9E    __TEXT    __stubs
-0x100A3C5A0    0x0000204A    __TEXT    __stub_helper
-0x100A3E5EC    0x000231B0    __TEXT    __gcc_except_tab
-0x100A617A0    0x000178D0    __TEXT    __const
-0x100A79070    0x0008A5DA    __TEXT    __cstring
-0x100B0364A    0x0005F462    __TEXT    __objc_methname
-0x100B62AAC    0x00008794    __TEXT    __objc_classname
-0x100B6B240    0x0003B4EB    __TEXT    __objc_methtype
-0x100BA672C    0x00001742    __TEXT    __ustring
-0x100BA7E6E    0x00000172    __TEXT    __entitlements
-0x100BA7FE0    0x0000037B    __TEXT    __dof_RACSignal
-0x100BA835B    0x000002E8    __TEXT    __dof_RACCompou
-0x100BA8644    0x00012964    __TEXT    __unwind_info
-0x100BBAFA8    0x00000058    __TEXT    __eh_frame
-0x100BBB000    0x00000008    __DATA    __nl_symbol_ptr
-0x100BBB008    0x00000BD8    __DATA    __got
-0x100BBBBE0    0x00002628    __DATA    __la_symbol_ptr
-0x100BBE208    0x00000070    __DATA    __mod_init_func
-0x100BBE280    0x0001CEE0    __DATA    __const
-0x100BDB160    0x00039CA0    __DATA    __cfstring
-0x100C14E00    0x00002B00    __DATA    __objc_classlist
-0x100C17900    0x000000A0    __DATA    __objc_nlclslist
-0x100C179A0    0x00000680    __DATA    __objc_catlist
-0x100C18020    0x000000D0    __DATA    __objc_nlcatlist
-0x100C180F0    0x00000638    __DATA    __objc_protolist
-0x100C18728    0x00000008    __DATA    __objc_imageinfo
-0x100C18730    0x001252F8    __DATA    __objc_const
-0x100D3DA28    0x000150B0    __DATA    __objc_selrefs
-0x100D52AD8    0x00000150    __DATA    __objc_protorefs
-0x100D52C28    0x00002A38    __DATA    __objc_classrefs
-0x100D55660    0x000019F8    __DATA    __objc_superrefs
-0x100D57058    0x000085E8    __DATA    __objc_ivar
-0x100D5F640    0x0001AE00    __DATA    __objc_data
-0x100D7A440    0x0000CC70    __DATA    __data
-0x100D870B0    0x00004698    __DATA    __bss
-0x100D8B750    0x00001298    __DATA    __common
-```
-
+* 举例1
+  * ![machoview_file_text_data](../../../assets/img/machoview_file_text_data.png)
+* 举例2
+  * MachOView查看zzzzHeiBaoLib.dylib
+    * ![machoview_heibao_text_data](../../../assets/img/machoview_heibao_text_data.png)
+* 举例3
+  ```bash
+  # Sections:
+  # Address    Size        Segment    Section
+  0x100001DC0    0x00A38B42    __TEXT    __text
+  0x100A3A902    0x00001C9E    __TEXT    __stubs
+  0x100A3C5A0    0x0000204A    __TEXT    __stub_helper
+  0x100A3E5EC    0x000231B0    __TEXT    __gcc_except_tab
+  0x100A617A0    0x000178D0    __TEXT    __const
+  0x100A79070    0x0008A5DA    __TEXT    __cstring
+  0x100B0364A    0x0005F462    __TEXT    __objc_methname
+  0x100B62AAC    0x00008794    __TEXT    __objc_classname
+  0x100B6B240    0x0003B4EB    __TEXT    __objc_methtype
+  0x100BA672C    0x00001742    __TEXT    __ustring
+  0x100BA7E6E    0x00000172    __TEXT    __entitlements
+  0x100BA7FE0    0x0000037B    __TEXT    __dof_RACSignal
+  0x100BA835B    0x000002E8    __TEXT    __dof_RACCompou
+  0x100BA8644    0x00012964    __TEXT    __unwind_info
+  0x100BBAFA8    0x00000058    __TEXT    __eh_frame
+  0x100BBB000    0x00000008    __DATA    __nl_symbol_ptr
+  0x100BBB008    0x00000BD8    __DATA    __got
+  0x100BBBBE0    0x00002628    __DATA    __la_symbol_ptr
+  0x100BBE208    0x00000070    __DATA    __mod_init_func
+  0x100BBE280    0x0001CEE0    __DATA    __const
+  0x100BDB160    0x00039CA0    __DATA    __cfstring
+  0x100C14E00    0x00002B00    __DATA    __objc_classlist
+  0x100C17900    0x000000A0    __DATA    __objc_nlclslist
+  0x100C179A0    0x00000680    __DATA    __objc_catlist
+  0x100C18020    0x000000D0    __DATA    __objc_nlcatlist
+  0x100C180F0    0x00000638    __DATA    __objc_protolist
+  0x100C18728    0x00000008    __DATA    __objc_imageinfo
+  0x100C18730    0x001252F8    __DATA    __objc_const
+  0x100D3DA28    0x000150B0    __DATA    __objc_selrefs
+  0x100D52AD8    0x00000150    __DATA    __objc_protorefs
+  0x100D52C28    0x00002A38    __DATA    __objc_classrefs
+  0x100D55660    0x000019F8    __DATA    __objc_superrefs
+  0x100D57058    0x000085E8    __DATA    __objc_ivar
+  0x100D5F640    0x0001AE00    __DATA    __objc_data
+  0x100D7A440    0x0000CC70    __DATA    __data
+  0x100D870B0    0x00004698    __DATA    __bss
+  0x100D8B750    0x00001298    __DATA    __common
+  ```

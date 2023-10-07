@@ -11,7 +11,7 @@
       * 文件的构架是x86_64
       * number of Load commands表示有74个load commond
       * MH_TWOLEVEL二级名字空间
-      * MH_PIE 随机地址空间
+      * `MH_PIE` 随机地址空间
 * Mach-O Core Dump File Structure
   * ![macho_file_structure_fields](../../../assets/img/macho_file_structure_fields.png)
 * 内存映射 = 结构体偏移 = 结构体字段

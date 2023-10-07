@@ -4,7 +4,7 @@
   * 概述
     * ![compile_link_load_procedure](../../assets/img/compile_link_load_procedure.png)
   * 详解
-    * ![macho_load_fields_process](../../assets/img/macho_load_fields_process.png)
+    * ![macho_load_fields_process](../../assets/img/macho_load_fields_process.jpg)
 
 ## iOS的app启动过程
 

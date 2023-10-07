@@ -9,3 +9,52 @@
   * 对比
     * `Mach-O`的`PIC` ~= [ELF](https://book.crifan.org/books/exec_file_format_elf/website/)的`GOT`
       * 区别：Mach-O 代码使用直接偏移引用数据，而 ELF 通过全局偏移表间接访问所有数据。
+  * `PIC` 
+    * ~= `PIE` = `Position-Independent Executable`
+      * 对应的Mach-O中有个flag是：`MH_PIE`
+    * ~= `ASLR`
+
+## `ASLR`
+
+* `ASLR`=`Address Space Layout Randomization`=`地址空间布局随机化`
+
+参考：
+
+![ios_app_enable_alsr](../../assets/img/ios_app_enable_alsr.png)
+
+去尝试给iOS的app去开启ASLR：
+
+* Linking->Generate Position-Dependent Executable
+  * ![xcode_linking_gen_pic](../../assets/img/xcode_linking_gen_pic.png)
+* Apple Clang - Code Generation->Generate Position-Dependent Code
+  * ![xcode_clang_gen_pic](../../assets/img/xcode_clang_gen_pic.png)
+
+结果：
+
+编译都会报错：
+
+```bash
+ld: -no_pie and -bitcode_bundle (Xcode setting ENABLE_BITCODE=YES) cannot be used together
+
+Showing All Messages
+-no_pie and -bitcode_bundle (Xcode setting ENABLE_BITCODE=YES) cannot be used together
+```
+
+看起来是和BITCODE的`ENABLE_BITCODE=YES`相冲突了。
+
+所以暂时放弃深究。
+
+后记：
+
+上述的：
+
+`Position-Dependent Executable`和`Generate Position-Dependent Code`
+
+很明显是：要关闭`ASLR`=`PIC`=`PIE`的意思啊
+
+所以感觉是：
+
+* `ASLR`=`PIC`=`PIE`：默认已开启
+  * 如果想要去**关闭**ALSR，才需要去更改设置，改为
+    * Linking->Generate Position-Dependent Executable = `YES`
+    * Apple Clang - Code Generation->Generate Position-Dependent Code = `YES`

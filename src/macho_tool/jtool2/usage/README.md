@@ -20,3 +20,7 @@
   ```bash
   jtool2 --analyze yourBinary
   ```
+* `--pages`：显示layout
+  ```bash
+  jtool2 --pages yourBinary
+  ```

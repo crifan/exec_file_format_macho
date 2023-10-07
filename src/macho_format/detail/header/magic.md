@@ -1,5 +1,7 @@
 # Mach-O的Header的magic
 
+* `magic`=`魔数`
+
 [源码定义](https://opensource.apple.com/source/xnu/xnu-2050.18.24/EXTERNAL_HEADERS/mach-o/loader.h)：
 
 ```c
@@ -15,5 +17,6 @@
 ->
 
 * magic
-  * 32bit：`0xfeedface`
-  * 64bit：`0xfeedfacf`
+  * 通用格式：`0xcafebabe`
+  * （`armv7`等）32bit：`0xfeedface`
+  * （`arm64`等）64bit：`0xfeedfacf`

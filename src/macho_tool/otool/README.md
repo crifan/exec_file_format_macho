@@ -1,13 +1,5 @@
 # otool
 
-TODO：
-
-* 【记录】用otool查看分析二进制和库文件信息
-* 【记录】用otool去分析抖音二进制AwemeCore
-* 【未解决】iOS中从otool输出的B16@0:8搞懂函数类型和参数定义
-
----
-
 * `otool`
   * =`object file displaying tool`
   * 是什么：查看目标文件信息的工具

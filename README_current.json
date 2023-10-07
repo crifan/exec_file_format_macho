@@ -1,7 +1,7 @@
 {
-  "latestVersion": "v0.9.5",
-  "lastUpdate": "20231006",
+  "latestVersion": "v1.0.0",
+  "lastUpdate": "20231007",
   "gitRepoName": "exec_file_format_macho",
   "bookName": "可执行文件格式：Mach-O",
-  "bookDescription": "介绍Mac和iOS等Apple苹果系统的常见可执行文件格式：Mach-O；"
+  "bookDescription": "介绍Mac和iOS等Apple苹果系统的常见可执行文件格式：Mach-O；先是Mach-O概览；包括背景知识的XNU、编译链接加载过程、PIC等；然后介绍Mach-O格式，包括结构概述和结构图，以及结构详情，包括Header、Load Commands和Segment的data；其中Header包括magic、cputype和cpusubtype、filetype、flags；Load Commands包括LC_UUID、LC_SEGMENT、LC_SEGMENT_64、LC_SYMTAB、LC_DYLD_CHAINED_FIXUPS、LC_DYLD_EXPORTS_TRIE等；Segment包括__TEXT、__DATA、__IMPORT、__LINKEDIT、__OBJC；以及各个Segment的section，比如symbol、strings等；然后是Mach-O格式的子项，包括FAT、codesign、虚拟地址、大小限制等；然后整理Mach-O的各种工具，包括MachOView、rabin2、jtool2、otool、pagestuff，以及每个工具的用法、举例、help语法等；"
 }

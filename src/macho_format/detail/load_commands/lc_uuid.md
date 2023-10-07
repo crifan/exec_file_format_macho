@@ -20,3 +20,7 @@ struct uuid_command {
 
 * MachOView查看到某`LC_UUID`
   * ![machoview_lc_uuid_example](../../../assets/img/machoview_lc_uuid_example.png)
+* [jtool2解析AwemeCore](../../../macho_tool/jtool2/examples/awemecore.md)中`jtool2 -l xxx/AwemeCore`输出的
+  ```bash
+  LC 09: LC_UUID                   UUID: F1FCF15A-6465-31F0-9300-5BA1B8F91017
+  ```

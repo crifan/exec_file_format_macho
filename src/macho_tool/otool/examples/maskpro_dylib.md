@@ -18,4 +18,4 @@
 
 输出：
 
-![otool_ov_maskprodylib](../../../assets/img/otool_ov_maskprodylib.png)
+![otool_ov_maskprodylib](../../../assets/img/otool_ov_maskprodylib.jpg)

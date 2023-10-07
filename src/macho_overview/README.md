@@ -10,7 +10,7 @@
         * iOS的内核是`XNU`
           * `XNU`由多个部分组成
             * 其中一部分是`Mach`微内核microkernel
-              * ![ios_kernel_xnu_arch](../assets/img/ios_kernel_xnu_arch.png)
+              * ![ios_kernel_xnu_arch](../assets/img/ios_kernel_xnu_arch.jpg)
       * `O`=`Object`=对象
   * 用到`Mach-O`的系统
     * `Mach kernel`

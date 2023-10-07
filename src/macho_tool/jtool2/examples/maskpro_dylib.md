@@ -228,4 +228,4 @@ Symbolicated 131 symbols and 0 functions
 
 输出：
 
-![jtool2_analyze_maskprodylib](../../../assets/img/jtool2_analyze_maskprodylib.png)
+![jtool2_analyze_maskprodylib](../../../assets/img/jtool2_analyze_maskprodylib.jpg)

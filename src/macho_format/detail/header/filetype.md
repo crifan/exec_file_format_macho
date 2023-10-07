@@ -3,6 +3,7 @@
 ## 常见文件类型filetype
 
 * Mach-O的filetype
+  * 文件类型概述：Executables, bundles, dylibs, kexts, cores等等
   * 常见文件类型
     * `MH_EXECUTE`=可执行文件=`executable`=应用
       * 文件：`.app/xxx`
